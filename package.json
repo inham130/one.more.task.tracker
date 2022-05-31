@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/inham130/one.more.task.tracker/issues"
   },
-  "homepage": "https://github.com/inham130/one.more.task.tracker#readme"
+  "homepage": "https://github.com/inham130/one.more.task.tracker#readme",
+  "devDependencies": {
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.72.1"
+  }
 }
