@@ -1,5 +1,6 @@
 import { FC, MouseEvent, ChangeEvent, useState } from 'react';
 import styles from './app.module.css'
+import { Input } from "../Input";
 
 type Task = {
   id: number;
@@ -30,8 +31,8 @@ export const App: FC = () => {
       <h1 className={styles.h1}>Hello Tasks</h1>
 
       <form className={styles.form}>
-        <input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
-        <input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
+        <Input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
+        <Input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
         <button onClick={handleCreateTask}>Create Task</button>
       </form>
       <div className="task-list">
