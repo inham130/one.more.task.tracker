@@ -1,5 +1,5 @@
 import { FC, MouseEvent, ChangeEvent, useState } from 'react';
-import styles from './app.css'
+import styles from './app.module.css'
 
 type Task = {
   id: number;
