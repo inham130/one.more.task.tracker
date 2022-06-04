@@ -7,7 +7,7 @@ type Task = {
   description: string;
 }
 
-const App: FC = () => {
+export const App: FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDesctiorion] = useState('');
   const [tasks, setTasks] = useState<Array<Task>>([]);
@@ -45,4 +45,3 @@ const App: FC = () => {
     </main>
   );
 }
-export default App;
