@@ -5,11 +5,10 @@ type OwnProps = {
   className?: String,
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const Input: FC<OwnProps> = (
-  { className = '',
-    ...inputAttributes
-  }) => {
-
+export const Input: FC<OwnProps> = ({
+  className = '',
+  ...inputAttributes
+}) => {
   const rootClasses = [styles.input, className].join(' ');
 
   return (
