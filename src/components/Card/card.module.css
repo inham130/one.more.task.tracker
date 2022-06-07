@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #6c757d;
+  color: #ffffff;
+
+  &_header {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #0000001F;
+  }
+
+  &_body {
+    padding: 20px;
+  }
+}

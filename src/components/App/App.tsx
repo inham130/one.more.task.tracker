@@ -1,6 +1,7 @@
 import { FC, MouseEvent, ChangeEvent, useState } from 'react';
 import styles from './app.module.css'
 import { Input } from "../Input";
+import { Card } from '../Card';
 
 type Task = {
   id: number;
@@ -11,7 +12,7 @@ type Task = {
 export const App: FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDesctiorion] = useState('');
-  const [tasks, setTasks] = useState<Array<Task>>([]);
+  const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
 
   const handleCreateTask = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -28,19 +29,16 @@ export const App: FC = () => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.h1}>Hello Tasks</h1>
+      <h1>Hello Tasks</h1>
 
-      <form className={styles.form}>
+      <form className={styles.form} style={{marginBottom: '16px'}}>
         <Input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
         <Input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
-        <button onClick={handleCreateTask}>Create Task</button>
+        <button  onClick={handleCreateTask}>Create Task</button>
       </form>
-      <div className="task-list">
+      <div className="task-list" style={{width: '30vw'}}>
         {tasks.map((task) => (
-            <div key={task.id} className="task">
-              <div className="task_title">{task.title}</div>
-              <div className="task_description">{task.description}</div>
-            </div>
+          <Card key={task.id} title={task.title} body={task.description} />
         ))}
       </div>
     </main>
