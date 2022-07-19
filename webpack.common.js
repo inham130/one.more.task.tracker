@@ -39,7 +39,8 @@ module.exports = {
                 localIdentName: '[path][name]__[local]'
               }
             }
-          }
+          },
+          { loader: 'postcss-loader' }
         ]
       }
     ]

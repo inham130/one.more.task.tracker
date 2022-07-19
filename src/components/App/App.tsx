@@ -1,11 +1,46 @@
-import { FC } from 'react';
-import styles from './app.css'
+import { FC, MouseEvent, ChangeEvent, useState } from 'react';
+import styles from './app.module.css'
+import { Input } from "../Input";
+import { Card } from '../Card';
 
-const App: FC = () => {
+type Task = {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export const App: FC = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDesctiorion] = useState('');
+  const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
+
+  const handleCreateTask = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setTasks([...tasks, {id: new Date().getTime(),title, description}]);
+    setTitle('');
+    setDesctiorion('');
+  }
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  }
+  const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setDesctiorion(event.target.value);
+  }
+
   return (
-    <div>
-      <h1 className={styles.h1}>Hello React</h1>
-    </div>
+    <main className={styles.main}>
+      <h1>Hello Tasks</h1>
+
+      <form className={styles.form} style={{marginBottom: '16px'}}>
+        <Input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
+        <Input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
+        <button  onClick={handleCreateTask}>Create Task</button>
+      </form>
+      <div className="task-list" style={{width: '30vw'}}>
+        {tasks.map((task) => (
+          <Card key={task.id} title={task.title} body={task.description} />
+        ))}
+      </div>
+    </main>
   );
 }
-export default App;
