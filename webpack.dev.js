@@ -12,7 +12,7 @@ module.exports = merge(common, {
     watchFiles: ['src/**/*.tsx', 'src/**/*.ts', 'src/**/*.css'],
     compress: true,
     hot: true,
-    open: true,
+    open: false,
     port: 3000,
     historyApiFallback: true,
   }
