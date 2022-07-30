@@ -1,17 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    assetModuleFilename: 'assets/[name][ext]',
+    clean: true
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
     modules: [
       path.join(__dirname, 'node_modules')
-    ]
+    ],
+    plugins: [new TsconfigPathsPlugin({
+      extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
+    })],
   },
   module: {
     rules: [
@@ -42,6 +48,14 @@ module.exports = {
           },
           { loader: 'postcss-loader' }
         ]
+      },
+      {
+        test: /\.svg/,
+        type: 'asset/resource',
+        include: path.resolve(__dirname, "src"),
+        generator: {
+          filename: "assets/[name][ext]",
+        }
       }
     ]
   },
