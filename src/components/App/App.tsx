@@ -1,8 +1,8 @@
-import { FC, MouseEvent, ChangeEvent, useState } from 'react';
+import { FC, ChangeEvent, useState } from 'react';
 import styles from './app.module.css'
 import { Input } from '@components/Input';
-import { Card } from 'components/Card';
-import { Modal } from 'components/Modal';
+import { Card } from '@components/Card';
+import { Modal } from '@components/Modal';
 
 type Task = {
   id: number;
@@ -16,8 +16,7 @@ export const App: FC = () => {
   const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const handleCreateTask = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+  const handleCreateTask = () => {
     setTasks([...tasks, {id: new Date().getTime(),title, description}]);
     setTitle('');
     setDesctiorion('');
@@ -32,13 +31,11 @@ export const App: FC = () => {
   return (
     <main className={styles.main}>
       <h1>Hello Tasks</h1>
-
       <button onClick={() => setModalVisible(true)}>Create Task</button>
-      <Modal isVisible={isModalVisible} setVisible={setModalVisible}>
-        <form className={styles.form} style={{marginBottom: '16px'}}>
+      <Modal isVisible={isModalVisible} title='Create Task' setVisible={setModalVisible} onSave={handleCreateTask}>
+        <form className={styles.form}>
           <Input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
           <Input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
-          <button  onClick={handleCreateTask}>Create Task</button>
         </form>
       </Modal>
       <div className="task-list" style={{width: '50vw'}}>
