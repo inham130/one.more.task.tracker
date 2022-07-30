@@ -6,17 +6,15 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    assetModuleFilename: 'assets/[name][ext]',
+    clean: true
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
     modules: [
       path.join(__dirname, 'node_modules')
     ],
-    // alias: {
-    //   '@components': path.resolve(__dirname, 'src', 'components'),
-    //   '@utils': path.resolve(__dirname, 'src/utils')
-    // }
     plugins: [new TsconfigPathsPlugin({
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
     })],
@@ -50,6 +48,14 @@ module.exports = {
           },
           { loader: 'postcss-loader' }
         ]
+      },
+      {
+        test: /\.svg/,
+        type: 'asset/resource',
+        include: path.resolve(__dirname, "src"),
+        generator: {
+          filename: "assets/[name][ext]",
+        }
       }
     ]
   },

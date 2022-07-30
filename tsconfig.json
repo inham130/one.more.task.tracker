@@ -16,7 +16,8 @@
     "baseUrl": "src",
     "paths": {
       "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "exclude": [
