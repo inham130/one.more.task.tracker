@@ -15,7 +15,7 @@ export const App: FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDesctiorion] = useState('');
   const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
-  const [isModalVisible, setModalVisible] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const handleCreateTask = () => {
     setTasks([...tasks, {id: new Date().getTime(),title, description}]);
