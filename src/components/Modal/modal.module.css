@@ -50,11 +50,6 @@
   }
 
   &__close {
-    width: 24px;
-    height: 24px;
     margin-left: auto;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
   }
 }

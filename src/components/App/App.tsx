@@ -3,6 +3,7 @@ import styles from './app.module.css'
 import { Input } from '@components/Input';
 import { Card } from '@components/Card';
 import { Modal } from '@components/Modal';
+import { Button } from '@components/Button';
 
 type Task = {
   id: number;
@@ -31,7 +32,7 @@ export const App: FC = () => {
   return (
     <main className={styles.main}>
       <h1>Hello Tasks</h1>
-      <button onClick={() => setModalVisible(true)}>Create Task</button>
+      <Button onClick={() => setModalVisible(true)}>Create Task</Button>
       <Modal isVisible={isModalVisible} title='Create Task' setVisible={setModalVisible} onSave={handleCreateTask}>
         <form className={styles.form}>
           <Input className={styles.input} onChange={handleTitleChange} value={title} type="text" name="title"/>
