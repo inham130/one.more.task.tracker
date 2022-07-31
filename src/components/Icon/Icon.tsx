@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import styles from './icon.module.css';
 import * as sprite from '@assets/atlas.svg';
 
 type IconProps = {
@@ -14,7 +15,7 @@ export const Icon: FC<IconProps> = (
   height = '24px'
 }) => {
   return (
-    <svg width={width} height={height}>
+    <svg className={styles.icon} width={width} height={height}>
       <use href={`${sprite}#${id}`} />
     </svg>
   )

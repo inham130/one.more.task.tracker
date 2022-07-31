@@ -1,5 +1,6 @@
 import { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useCallback } from 'react';
 import { Icon } from '@components/Icon';
+import { Button } from '@components/Button';
 import styles from './modal.module.css';
 import { classNames } from '@utils/index';
 
@@ -35,17 +36,17 @@ export const Modal: FC<OwnProps> = ({
       <div className={styles.modal__dialog} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modal__header}>
           { title.length > 0 && <h5 className={styles.modal__title}>{title}</h5> }
-          <button className={styles.modal__close} onClick={handleClose}>
+          <Button className={styles.modal__close} variant='icon' onClick={handleClose}>
             <Icon id="x" />
-          </button>
+          </Button>
         </div>
         <div className={styles.modal__content}>
           {children}
         </div>
         <div className={styles.modal__footer}>
           {renderFooter ? renderFooter() : <>
-            <button onClick={handleClose}>Cancel</button>
-            <button onClick={handleSave}>Save</button>
+            <Button onClick={handleClose} variant='secondary'>Cancel</Button>
+            <Button onClick={handleSave}>Save</Button>
           </>}
         </div>
       </div>
