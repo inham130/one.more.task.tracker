@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/inham130/one.more.task.tracker#readme",
   "devDependencies": {
+    "@redux-devtools/core": "^3.13.1",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.4.7",
@@ -36,7 +37,9 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.4",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-redux": "^8.0.2"
   }
 }
