@@ -4,12 +4,7 @@ import { Input } from '@components/Input';
 import { Card } from '@components/Card';
 import { Modal } from '@components/Modal';
 import { Button } from '@components/Button';
-
-type Task = {
-  id: number;
-  title: string;
-  description: string;
-}
+import { Task } from '@customTypes/index';
 
 export const App: FC = () => {
   const [title, setTitle] = useState('');
@@ -41,7 +36,7 @@ export const App: FC = () => {
       </Modal>
       <div className="task-list" style={{width: '50vw'}}>
         {tasks.map((task) => (
-          <Card key={task.id} title={task.title} body={task.description} />
+          <Card key={String(task.id)} title={task.title} body={task.description} />
         ))}
       </div>
     </main>
