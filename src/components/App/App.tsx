@@ -2,11 +2,11 @@ import { FC, ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './app.module.css'
 import { Input } from '@components/Input';
-import { Card } from '@components/Card';
 import { Modal } from '@components/Modal';
 import { Button } from '@components/Button';
 import { Task } from '@customTypes/index';
 import { TasksState, add } from '@store/tasks';
+import { TaskList } from '@components/TaskList';
 
 export const App: FC = () => {
   const [title, setTitle] = useState('');
@@ -37,11 +37,7 @@ export const App: FC = () => {
           <Input className={styles.input} onChange={handleDescriptionChange} value={description} type="text" name="description"/>
         </form>
       </Modal>
-      <div className="task-list" style={{width: '50vw'}}>
-        {tasks.map((task) => (
-          <Card key={String(task.id)} title={task.title} body={task.description} />
-        ))}
-      </div>
+      <TaskList tasks={tasks} />
     </main>
   );
 }
