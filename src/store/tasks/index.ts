@@ -1,1 +1,1 @@
-export { tasksSlice } from './tasksSlice';
+export { tasksSlice, TasksState, add, remove } from './tasksSlice';
