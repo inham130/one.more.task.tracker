@@ -1,24 +1,22 @@
 import { FC, ChangeEvent, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './app.module.css'
 import { Input } from '@components/Input';
 import { Card } from '@components/Card';
 import { Modal } from '@components/Modal';
 import { Button } from '@components/Button';
-
-type Task = {
-  id: number;
-  title: string;
-  description: string;
-}
+import { Task } from '@customTypes/index';
+import { TasksState, add } from '@store/tasks';
 
 export const App: FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDesctiorion] = useState('');
-  const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
   const [isModalVisible, setModalVisible] = useState(false);
+  const tasks:Task[] = useSelector((state:TasksState) => state.tasks);
+  const dispatch = useDispatch();
 
   const handleCreateTask = () => {
-    setTasks([...tasks, {id: new Date().getTime(),title, description}]);
+    dispatch(add({id: new Date().getTime(),title, description}));
     setTitle('');
     setDesctiorion('');
   }
@@ -41,7 +39,7 @@ export const App: FC = () => {
       </Modal>
       <div className="task-list" style={{width: '50vw'}}>
         {tasks.map((task) => (
-          <Card key={task.id} title={task.title} body={task.description} />
+          <Card key={String(task.id)} title={task.title} body={task.description} />
         ))}
       </div>
     </main>
