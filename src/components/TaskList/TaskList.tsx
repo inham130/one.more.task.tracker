@@ -1,22 +1,21 @@
-import { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { FC, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../Card';
-import { Task } from '@/types';
+import { Store, Task } from '@/types';
 import { remove } from '@store/Tasks';
 import styles from './taskList.module.css';
 import { show } from '@store/Modal';
 
-type OwnProps = {
-  tasks: Task[];
-}
-
-export const TaskList: FC<OwnProps> = ({tasks = []}) => {
+export const TaskList: FC = () => {
   const dispatch = useDispatch();
+  const tasks:Task[] = useSelector((state:Store) => state.tasks);
+  const tasksRef = useRef(tasks);
+  tasksRef.current = tasks;
 
-  const handleEdit = useCallback((id: number) => {
-    const taskData = tasks.find(task => task.id === id);
+  const handleEdit = (id: number) => {
+    const taskData = tasksRef.current.find(task => task.id === id);
     dispatch(show({type: 'task', modalProps: taskData}))
-  }, [tasks]);
+  };
 
   const handleRemove = (id: number) => {
     dispatch(remove({ id }));

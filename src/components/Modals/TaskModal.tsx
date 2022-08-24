@@ -8,7 +8,7 @@ import { Store } from '@/types';
 
 export const TaskModal = () => {
   let isVisible = false;
-  let initialtitle = '';
+  let initialTitle = '';
   let initialDescription = '';
   let taskId: number | null = null;
   const dispatch = useDispatch();
@@ -19,15 +19,15 @@ export const TaskModal = () => {
    isVisible = true;
   }
   if (modalProps !== null) {
-    initialtitle = modalProps.title as string;
+    initialTitle = modalProps.title as string;
     initialDescription = modalProps.description  as string;
     taskId = modalProps.id as number;
   }
 
-  const [title, setTitle] = useState(initialtitle);
-  const [description, setDesctiorion] = useState(initialDescription);
+  const [title, setTitle] = useState(initialTitle);
+  const [description, setDescription] = useState(initialDescription);
 
-  const handleSabeTask = () => {
+  const handleSaveTask = () => {
     if (taskId) {
       dispatch(edit({id: taskId, title, description}));
     } else {
@@ -35,20 +35,20 @@ export const TaskModal = () => {
     }
     dispatch(hide());
     setTitle('');
-    setDesctiorion('');
+    setDescription('');
   }
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   }
   const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setDesctiorion(event.target.value);
+    setDescription(event.target.value);
   }
 
   const handleSetVisible = useCallback(() => dispatch(hide()), []);
 
   return (
     <>
-      <Modal isVisible={isVisible} setVisible={handleSetVisible} title='Create Task' onSave={handleSabeTask}>
+      <Modal isVisible={isVisible} setVisible={handleSetVisible} title='Create Task' onSave={handleSaveTask}>
         <form>
           <Input onChange={handleTitleChange} value={title} type="text" name="title"/>
           <Input onChange={handleDescriptionChange} value={description} type="text" name="description"/>
