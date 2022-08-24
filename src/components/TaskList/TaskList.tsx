@@ -1,9 +1,10 @@
 import { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card } from '../Card';
-import { Task } from '@customTypes/index';
-import { remove } from '@store/tasks';
+import { Task } from '@/types';
+import { remove } from '@store/Tasks';
 import styles from './taskList.module.css';
+import { show } from '@store/Modal';
 
 type OwnProps = {
   tasks: Task[];
@@ -12,9 +13,10 @@ type OwnProps = {
 export const TaskList: FC<OwnProps> = ({tasks = []}) => {
   const dispatch = useDispatch();
 
-  const handleEdit = useCallback(() => {
-    console.log('handleEdit')
-  }, []);
+  const handleEdit = useCallback((id: number) => {
+    const taskData = tasks.find(task => task.id === id);
+    dispatch(show({type: 'task', modalProps: taskData}))
+  }, [tasks]);
 
   const handleRemove = (id: number) => {
     dispatch(remove({ id }));
@@ -31,6 +33,5 @@ export const TaskList: FC<OwnProps> = ({tasks = []}) => {
               handleRemove={handleRemove} />
       ))}
     </div>
-
   );
 };

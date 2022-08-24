@@ -1,6 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { tasksSlice } from '@store/tasks';
+import { tasksSlice } from '@store/Tasks';
+import { modalSlice } from '@store/Modal';
 
 export const store = configureStore({
-  reducer: tasksSlice.reducer
+  reducer: {
+    tasks: tasksSlice.reducer,
+    modal: modalSlice.reducer
+  }
 });

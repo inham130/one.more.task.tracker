@@ -36,7 +36,7 @@ export const Card: FC<OwnProps> = ({
         <div className={styles.card_title}>{title}</div>
         <div className={styles.card_actions}>
           {handleEdit && <Button variant='icon' onClick={onEdit}>
-            <Icon id="x" />
+            <Icon id="pencil" />
           </Button>}
           {handleRemove &&<Button variant='icon' onClick={onRemove}>
             <Icon id="x" />
