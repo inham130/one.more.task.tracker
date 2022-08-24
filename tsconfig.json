@@ -18,7 +18,6 @@
       "@/*": ["./*"],
       "@components/*": ["components/*"],
       "@store/*": ["store/*"],
-      "@customTypes/*": ["types/*"],
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"]
     }
