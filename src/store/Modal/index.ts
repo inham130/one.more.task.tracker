@@ -1,0 +1,1 @@
+export { modalSlice, show, hide } from './modalSlice';

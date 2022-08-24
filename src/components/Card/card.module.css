@@ -8,6 +8,9 @@
   color: #212529;
 
   &_header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
     padding: 12px 20px;
     font-size: 16px;
     background-color: #f0f1f2;
@@ -16,5 +19,13 @@
 
   &_body {
     padding: 20px;
+  }
+
+  &_title {
+
+  }
+
+  &_actions {
+
   }
 }
