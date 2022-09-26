@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import * as sprite from '@assets/atlas.svg';
 
-type IconProps = {
+interface IconProps {
   id: string;
   width?: string;
   height?: string;

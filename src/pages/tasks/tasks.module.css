@@ -1,3 +1,4 @@
+
 .main {
   height: 100%;
   display: flex;
@@ -16,7 +17,7 @@
 
 .input {
   background: transparent;
-  border: 2px solid #00ADB5;
+  border: 2px solid var(--color-primary-400);
   width: 100%;
   padding: 5px;
   height: 30px;

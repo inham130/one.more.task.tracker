@@ -1,9 +1,9 @@
 import { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useCallback } from 'react';
-import { Icon } from '@components/Icon';
+import { Icon } from '@components/icon';
 import styles from './modal.module.css';
 import { classNames } from '@utils/index';
 
-type OwnProps = {
+interface ModalProps {
   children?: ReactNode | string;
   title?: string;
   isVisible: boolean;
@@ -12,7 +12,7 @@ type OwnProps = {
   renderFooter?: () => JSX.Element,
 }
 
-export const Modal: FC<OwnProps> = ({
+export const Modal: FC<ModalProps> = ({
   children = '',
   title = '',
   isVisible= false,

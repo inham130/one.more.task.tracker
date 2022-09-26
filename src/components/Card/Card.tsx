@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import styles from './card.module.css';
 
-type OwnProps = {
+interface CardProps {
   title: string;
   body: string;
 }
 
-export const Card: FC<OwnProps> = ({
+export const Card: FC<CardProps> = ({
   title = '',
   body = ''
 }) => {
