@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "outDir": "dist",
     "target": "es2016",
     "lib": ["es2019", "dom"],
@@ -13,7 +14,6 @@
     "strictNullChecks": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
     "paths": {
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],

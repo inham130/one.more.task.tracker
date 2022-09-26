@@ -1,11 +1,11 @@
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './input.module.css';
 
-type OwnProps = {
+interface InputProps {
   className?: String,
-} & InputHTMLAttributes<HTMLInputElement>
+};
 
-export const Input: FC<OwnProps> = ({
+export const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
   className = '',
   ...inputAttributes
 }) => {

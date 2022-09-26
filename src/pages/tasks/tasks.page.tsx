@@ -1,8 +1,7 @@
 import { FC, ChangeEvent, useState } from 'react';
-import styles from './app.module.css'
-import { Input } from '@components/Input';
-import { Card } from '@components/Card';
-import { Modal } from '@components/Modal';
+import styles from './tasks.module.css'
+import { Input, Card, Modal } from '../../components';
+
 
 type Task = {
   id: number;
@@ -10,10 +9,10 @@ type Task = {
   description: string;
 }
 
-export const App: FC = () => {
+export const Tasks: FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDesctiorion] = useState('');
-  const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'BOdy'}]);
+  const [tasks, setTasks] = useState<Array<Task>>([{id: 0, title: 'Title', description: 'Body'}]);
   const [isModalVisible, setModalVisible] = useState(false);
 
   const handleCreateTask = () => {

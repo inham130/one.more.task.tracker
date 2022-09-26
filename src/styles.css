@@ -1,4 +1,11 @@
+:root {
+  --color-primary-400: #00ADB5;
+  --color-neutral-600: #171719;
+}
+
 :global * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-neutral-600);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
